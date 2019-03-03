@@ -1,410 +1,649 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Money Meals</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <style>
-  body {
-    font: 400 15px Lato, sans-serif;
-    line-height: 1.8;
-    color: #818181;
-  }
-  h1 {
-    font-size: 150%;
-    font-weight: 900;
-    color: black;
-    font-family: Mountsirrat, serif;
-    text-align: center;
-  }
-  h2 {
-    font-size: 24px;
-    text-transform: uppercase;
-    color: #303030;
-    font-weight: 600;
-    margin-bottom: 30px;
-  }
-  h4 {
-    font-size: 18px;
-    line-height: 1.375em;
-    color: #303030;
-    font-weight: 400;
-    margin-bottom: 30px;
-  }  
-  .jumbotron {
-    background-image: url("https://totaleyecare.com.au/wp-content/uploads/2017/11/veg_lowres.jpg");
-    background-size: 100% 100%;
-    background-position: center center;
-    color: black;
-    padding: 300px 25px;
-    font-family: Mountsirrat, serif;
-    font-size: 65px;
-    font-weight: 900;
-  }
-  .container-fluid {
-    padding: 60px 50px;
-  }
-  .bg-grey {
-    background-color: #f6f6f6;
-  }
-  .logo-small {
-    color: #f4511e;
-    font-size: 50px;
-  }
-  .logo {
-    color: #f4511e;
-    font-size: 200px;
-  }
-  .thumbnail {
-    padding: 0 0 15px 0;
-    border: none;
-    border-radius: 0;
-  }
-  .thumbnail img {
-    width: 100%;
-    height: 100%;
-    margin-bottom: 10px;
-  }
-  .carousel-control.right, .carousel-control.left {
-    background-image: none;
-    color: #f4511e;
-  }
-  .carousel-indicators li {
-    border-color: #f4511e;
-  }
-  .carousel-indicators li.active {
-    background-color: #f4511e;
-  }
-  .item h4 {
-    font-size: 19px;
-    line-height: 1.375em;
-    font-weight: 400;
-    font-style: italic;
-    margin: 70px 0;
-  }
-  .item span {
-    font-style: normal;
-  }
-  .panel {
-    border: 1px solid #f4511e; 
-    border-radius:0 !important;
-    transition: box-shadow 0.5s;
-  }
-  .panel:hover {
-    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
-  }
-  .panel-footer .btn:hover {
-    border: 1px solid #f4511e;
-    background-color: #fff !important;
-    color: #f4511e;
-  }
-  .panel-heading {
-    color: #fff !important;
-    background-color: #f4511e !important;
-    padding: 25px;
-    border-bottom: 1px solid transparent;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-  }
-  .panel-footer {
-    background-color: white !important;
-  }
-  .panel-footer h3 {
-    font-size: 32px;
-  }
-  .panel-footer h4 {
-    color: #aaa;
-    font-size: 14px;
-  }
-  .panel-footer .btn {
-    margin: 15px 0;
-    background-color: #f4511e;
-    color: #fff;
-  }
-  .navbar {
-    margin-bottom: 0;
-    background-color: white;
-    z-index: 9999;
-    border: 0;
-    font-size: 12px !important;
-    line-height: 1.42857143 !important;
-    letter-spacing: 4px;
-    border-radius: 0;
-    font-family: Montserrat, sans-serif;
-    color: black;
-  }
-  .navbar li a, .navbar .navbar-brand {
-    color: black !important;
-  }
-  .navbar-nav li a:hover, .navbar-nav li.active a {
-    color: #f4511e !important;
-    background-color: #fff !important;
-  }
-  .navbar-default .navbar-toggle {
-    border-color: transparent;
-    color: black !important;
-  }
-  footer .glyphicon {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: #f4511e;
-  }
-  .slideanim {visibility:hidden;}
-  .slide {
-    animation-name: slide;
-    -webkit-animation-name: slide;
-    animation-duration: 1s;
-    -webkit-animation-duration: 1s;
-    visibility: visible;
-  }
-  @keyframes slide {
-    0% {
-      opacity: 0;
-      transform: translateY(70%);
-    } 
-    100% {
-      opacity: 1;
-      transform: translateY(0%);
-    }
-  }
-  @-webkit-keyframes slide {
-    0% {
-      opacity: 0;
-      -webkit-transform: translateY(70%);
-    } 
-    100% {
-      opacity: 1;
-      -webkit-transform: translateY(0%);
-    }
-  }
-  @media screen and (max-width: 768px) {
-    .col-sm-4 {
-      text-align: center;
-      margin: 25px 0;
-    }
-    .btn-lg {
-      width: 100%;
-      margin-bottom: 35px;
-    }
-  }
-  @media screen and (max-width: 480px) {
-    .logo {
-      font-size: 150px;
-    }
-  }
-  </style>
-</head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+	<!DOCTYPE html>
+	<html lang="zxx" class="no-js">
+	<head>
+		<!-- Mobile Specific Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Favicon-->
+		<link rel="shortcut icon" href="img/fav.png">
+		<!-- Author Meta -->
+		<meta name="author" content="codepixer">
+		<!-- Meta Description -->
+		<meta name="description" content="">
+		<!-- Meta Keyword -->
+		<meta name="keywords" content="">
+		<!-- meta character set -->
+		<meta charset="UTF-8">
+		<!-- Site Title -->
+		<title>Saas</title>
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#about">ABOUT US</a></li>
-        <li><a href="#services">NUTRITION</a></li>
-        <li><a href="#portfolio">FINANCE EDUCATION</a></li>
-        <li><a href="budget.html">BUDGETING</a></li>
-        <li><a href="shopping.html">SHOPPING/RECIPES</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+			<!--
+			CSS
+			============================================= -->
+			<link rel="stylesheet" href="css/linearicons.css">
+			<link rel="stylesheet" href="css/font-awesome.min.css">
+			<link rel="stylesheet" href="css/bootstrap.css">
+			<link rel="stylesheet" href="css/magnific-popup.css">
+			<link rel="stylesheet" href="css/nice-select.css">					
+			<link rel="stylesheet" href="css/animate.min.css">
+			<link rel="stylesheet" href="css/owl.carousel.css">
+			<link rel="stylesheet" href="css/main.css">
+		</head>
+		<body>
 
-<div class="jumbotron text-center">
-  <h1>Money Meals</h1> 
-  <p>A friendly budget planner for all your meal needs!</p> 
-</div>
-  
+			  <header id="header" id="home">
+			    <div class="container">
+			    	<div class="row align-items-center justify-content-between d-flex">
+				      <div id="logo">
+				        <a href="index.html"><img src="img/logo.png" alt="" title="" /></a>
+				      </div>
+				      <nav id="nav-menu-container">
+				        <ul class="nav-menu">
+				          <li class="menu-active"><a href="#home">Home</a></li>
+				          <li><a href="#service">Services</a></li>
+				          <li><a href="#feature">Features</a></li>
+				          <li><a href="#price">Price</a></li>
+				          <li><a href="#testimonial">Testimonial</a></li>
+				          <li class="menu-has-children"><a href="">Pages</a>
+				            <ul>
+				              <li><a href="generic.html">Generic</a></li>
+				              <li><a href="elements.html">Elements</a></li>
+				            </ul>
+				          </li>
+				          <li><a class="ticker-btn" href="#">Get Started</a></li>				          
+				        </ul>
+				      </nav><!-- #nav-menu-container -->		    		
+			    	</div>
+			    </div>
+			  </header><!-- #header -->
 
-<!-- Container (About Section) -->
-<div id="about" class="container-fluid">
-  <div class="row">
-    <div class="col-sm-8">
-      <h2>About Money Meals</h2><br>
-      <h4>We have created a budgeting system that allows families and indviduals to know how much they should spend on food. From this budget they are then able to buy ingredients for healthy recipes in their price range, allowing for both financial stablility and nutrition!</h4><br>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-    <div class="col-sm-4">
-      <span><img src = "https://sc01.alicdn.com/kf/HTB1TGkni0zJ8KJjSspk762F7VXan/Dark-Wicker-French-Stick-Baguette-Bread-Basket.png"></span>
-    </div>
-  </div>
-</div>
 
-<div class="container-fluid bg-grey">
-  <div class="row">
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-globe logo slideanim"></span>
-    </div>
-    <div class="col-sm-8">
-      <h2>Our Values</h2><br>
-      <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-      <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-  </div>
-</div>
+			<!-- start banner Area -->
+			<section class="banner-area relative" id="home">
+				<div class="overlay overlay-bg"></div>	
+				<div class="container">
+					<div class="row fullscreen d-flex align-items-center justify-content-center">
+						<div class="banner-content col-lg-8">
+							<h1 class="text-white">
+								Organize all with SaaS				
+							</h1>
+							<p class="pt-20 pb-20 text-white">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+							</p>
+						</div>											
+					</div>
+				</div>					
+			</section>
+			<!-- End banner Area -->	
 
-<!-- Container (Services Section) -->
-<div id="services" class="container-fluid text-center">
-  <h2>NUTRITION</h2>
-  <h4>What we offer</h4>
-  <br>
-  <div class="row slideanim">
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-off logo-small"></span>
-      <h4>POWER</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-heart logo-small"></span>
-      <h4>LOVE</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-lock logo-small"></span>
-      <h4>JOB DONE</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-  </div>
-  <br><br>
-  <div class="row slideanim">
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-leaf logo-small"></span>
-      <h4>GREEN</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-certificate logo-small"></span>
-      <h4>CERTIFIED</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-wrench logo-small"></span>
-      <h4 style="color:#303030;">HARD WORK</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-  </div>
-</div>
+			<!-- Start feature Area -->
+			<section class="feature-area pb-100" id="service">
+				<div class="container">
+					<div class="row mockup-container">
+						<img class="mx-auto d-block img-fluid" src="img/laptop.png" alt="">
+					</div>
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pt-100 pb-60 col-lg-10">
+							<div class="title text-center">
+								<h1 class="mb-10">Our Most Unique Features</h1>
+								<p>Who are in extremely love with eco friendly system.</p>
+							</div>
+						</div>
+					</div>						
+					<div class="row">
+						<div class="col-lg-4">
+							<div class="single-feature">
+								<span class="lnr lnr-screen"></span>
+								<h4>
+									Stunning Visuals
+								</h4>
+								<p>
+									Here, I focus on a range of items and features that we use in life without giving them a second thought such as Coca Cola.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="single-feature">
+								<span class="lnr lnr-code"></span>
+								<h4>
+									Clean Code
+								</h4>
+								<p>
+									Here, I focus on a range of items and features that we use in life without giving them a second thought such as Coca Cola.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="single-feature">
+								<span class="lnr lnr-clock"></span>
+								<h4>
+									Punctuality
+								</h4>
+								<p>
+									Here, I focus on a range of items and features that we use in life without giving them a second thought such as Coca Cola.
+								</p>
+							</div>
+						</div>												
+					</div>
+				</div>	
+			</section>
+			<!-- End feature Area -->
+			
+			<!-- Start about Area -->
+			<section class="about-area section-gap">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pb-60 col-lg-10">
+							<div class="title text-center">
+								<h1 class="mb-10">Powerful User interface Design</h1>
+								<p>Who are in extremely love with eco friendly system.</p>
+							</div>
+						</div>
+					</div>						
+					<div class="row align-items-center">
+						<div class="col-lg-6 about-left">
+							<h6>Brand new app to blow your mind</h6>
+							<h1>
+								We’ve made a life <br>
+								that will change you
+							</h1>
+							<p>
+								<span>
+									We are here to listen from you deliver exellence
+								</span>
+							</p>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp
+								or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+							</p>
+							<a class="primary-btn" href="#">Get Started now</a>
+						</div>
+						<div class="col-lg-6 about-right">
+							<div class="active-about-carusel">
+								<div class="single-carusel item">
+									<img class="img-fluid" src="img/about-img.png" alt="">
+								</div>
+								<div class="single-carusel item">
+									<img class="img-fluid" src="img/about-img.png" alt="">
+								</div>
+								<div class="single-carusel item">
+									<img class="img-fluid" src="img/about-img.png" alt="">
+								</div>																
+							</div>
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End about Area -->
+			
+			<!-- Start service Area -->
+			<section class="service-area section-gap" id="feature">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pb-60 col-lg-10">
+							<div class="title text-center">
+								<h1 class="mb-10">Features That make us Unique</h1>
+								<p>Who are in extremely love with eco friendly system.</p>
+							</div>
+						</div>
+					</div>					
+					<div class="row">
+						<div class="col-lg-6 secvice-left">
+							<div class="single-service d-flex flex-row pb-30">
+								<div class="icon">
+									<h1>01</h1>
+								</div>
+								<div class="desc">
+									<h4>User Research</h4>
+									<p>
+										inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach.
+									</p>
+								</div>
+							</div>
+							<div class="single-service d-flex flex-row pb-30">
+								<div class="icon">
+									<h1>03</h1>
+								</div>
+								<div class="desc">
+									<h4>Sketch & Wireframes</h4>
+									<p>
+										inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach.
+									</p>
+								</div>
+							</div>
+							<div class="single-service d-flex flex-row pb-30">
+								<div class="icon">
+									<h1>05</h1>
+								</div>
+								<div class="desc">
+									<h4>User Research</h4>
+									<p>
+										inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach.
+									</p>
+								</div>
+							</div>														
+						</div>
+						<div class="col-lg-6 secvice-right">
+							<div class="single-service d-flex flex-row pb-30">
+								<div class="icon">
+									<h1>02</h1>
+								</div>
+								<div class="desc">
+									<h4>User Interface</h4>
+									<p>
+										inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach.
+									</p>
+								</div>
+							</div>
+							<div class="single-service d-flex flex-row pb-30">
+								<div class="icon">
+									<h1>04</h1>
+								</div>
+								<div class="desc">
+									<h4>User Experience</h4>
+									<p>
+										inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach.
+									</p>
+								</div>
+							</div>
+							<div class="single-service d-flex flex-row pb-30">
+								<div class="icon">
+									<h1>06</h1>
+								</div>
+								<div class="desc">
+									<h4>User Interface</h4>
+									<p>
+										inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach.
+									</p>
+								</div>
+							</div>														
+						</div>						
+					</div>
+				</div>	
+			</section>
+			<!-- End service Area -->
+				
 
-<!-- Container (Portfolio Section) -->
-<div id="portfolio" class="container-fluid text-center bg-grey">
-  <h2>Financial Education</h2><br>
-  <h4>What we have created</h4>
-  <div class="row text-center slideanim">
-    <div class="col-sm-4">
-      <div class="thumbnail">
-        <img src="paris.jpg" alt="Paris" width="400" height="300">
-        <p><strong>Paris</strong></p>
-        <p>Yes, we built Paris</p>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="thumbnail">
-        <img src="newyork.jpg" alt="New York" width="400" height="300">
-        <p><strong>New York</strong></p>
-        <p>We built New York</p>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="thumbnail">
-        <img src="sanfran.jpg" alt="San Francisco" width="400" height="300">
-        <p><strong>San Francisco</strong></p>
-        <p>Yes, San Fran is ours</p>
-      </div>
-    </div>
-  </div><br>
-  
-  <h2>What our customers say</h2>
-  <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
+			<!-- Start callto-action Area -->
+			<section class="callto-action-area relative section-gap">
+				<div class="overlay overlay-bg"></div>	
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content col-lg-9">
+							<div class="title text-center">
+								<h1 class="mb-10 text-white">Got Impressed to our features</h1>
+								<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+								<a class="primary-btn" href="#">Request Free Demo</a>
+							</div>
+						</div>
+					</div>	
+				</div>	
+			</section>
+			<!-- End calto-action Area -->
+			
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <h4>"This company is the best. I am so happy with the result!"<br><span>Michael Roe, Vice President, Comment Box</span></h4>
-      </div>
-      <div class="item">
-        <h4>"One word... WOW!!"<br><span>John Doe, Salesman, Rep Inc</span></h4>
-      </div>
-      <div class="item">
-        <h4>"Could I... BE any more happy with this company?"<br><span>Chandler Bing, Actor, FriendsAlot</span></h4>
-      </div>
-    </div>
+			<!-- Start home-video Area -->
+			<section class="home-video-area">
+				<div class="container-fluid">
+					<div class="row justify-content-end align-items-center">
+						<div class="col-lg-4 no-padding video-right">
+							<p class="top-title">Tutorial for beginner</p>
+							<h1>Watch tutorial <br>
+							Video of SaaS to start</h1>
+							<p><span>We are here to listen from you deliver exellence</span></p>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. magna aliqua. Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. magna aliqua. Ut enim ad minim.
+							</p>
+						</div>
+						<section class="video-area col-lg-6">
+							<div class="overlay overlay-bg"></div>
+							<div class="container">
+								<div class="video-content">
+									<a href="http://www.youtube.com/watch?v=0O2aH4XLbto" class="play-btn"><img src="img/play-btn.png" alt=""></a>
+								</div>
+							</div>
+						</section>											
+					</div>
+				</div>	
+			</section>
+			<!-- End home-aboutus Area -->
 
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>
 
-<footer class="container-fluid text-center">
-  <a href="#myPage" title="To Top">
-    <span class="glyphicon glyphicon-chevron-up"></span>
-  </a>
-  <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
-</footer>
+			<!-- Start home-aboutus Area -->
+			<section class="home-aboutus-area">
+				<div class="container-fluid">
+					<div class="row justify-content-center align-items-center">
+						<div class="col-lg-8 no-padding about-left relative">
+							<div class="overlay overlay-bg"></div>	
+							<img class="img-fluid" src="img/f2.jpg" alt="">
+						</div>
+						<div class="col-lg-4 no-padding about-right">
+							<p class="top-title">24/7 Support system</p>
+							<h1>A Handy support <br>
+							System for the Software</h1>
+							<p><span>We are here to listen from you deliver exellence</span></p>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. magna aliqua. Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. magna aliqua. Ut enim ad minim.
+							</p>
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End home-aboutus Area -->			
+		
+			<!-- Start price Area -->
+			<section class="price-area section-gap" id="price">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pb-60 col-lg-8">
+							<div class="title text-center">
+								<h1 class="mb-10">Choose the best pricing for you</h1>
+								<p>Who are in extremely love with eco friendly system.</p>
+							</div>
+						</div>
+					</div>						
+					<div class="row">
+						<div class="col-lg-4">
+							<div class="single-price no-padding">
+								<div class="price-top">
+									<h4>Real basic</h4>
+								</div>
+								<ul class="lists">
+									<li>2.5 GB Space</li>
+									<li>Secure Online Transfer</li>
+									<li>Unlimited Styles</li>
+									<li>Customer Service</li>
+								</ul>
+								<div class="price-bottom">
+									<div class="price-wrap d-flex flex-row justify-content-center">
+										<span class="price">$</span><h1> 39 </h1><span class="time">Per <br> Month</span>
+									</div>
+									<a href="#" class="primary-btn header-btn">Get Started</a>
+								</div>
+								
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="single-price no-padding">
+								<div class="price-top">
+									<h4>Real Standred</h4>
+								</div>
+								<ul class="lists">
+									<li>2.5 GB Space</li>
+									<li>Secure Online Transfer</li>
+									<li>Unlimited Styles</li>
+									<li>Customer Service</li>
+								</ul>
+								<div class="price-bottom">
+									<div class="price-wrap d-flex flex-row justify-content-center">
+										<span class="price">$</span><h1> 69 </h1><span class="time">Per <br> Month</span>
+									</div>
+									<a href="#" class="primary-btn header-btn">Get Started</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<div class="single-price no-padding">
+								<div class="price-top">
+									<h4>Real Ultimate</h4>
+								</div>
+								<ul class="lists">
+									<li>2.5 GB Space</li>
+									<li>Secure Online Transfer</li>
+									<li>Unlimited Styles</li>
+									<li>Customer Service</li>
+								</ul>
+								<div class="price-bottom">
+									<div class="price-wrap d-flex flex-row justify-content-center">
+										<span class="price">$</span><h1> 99 </h1><span class="time">Per <br> Month</span>
+									</div>
+									<a href="#" class="primary-btn header-btn">Get Started</a>
+								</div>
+							</div>				
+						</div>								
+					</div>
+				</div>	
+			</section>
+			<!-- End price Area -->
 
-<script>
-$(document).ready(function(){
-  // Add smooth scrolling to all links in navbar + footer link
-  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
-    // Make sure this.hash has a value before overriding default behavior
-    if (this.hash !== "") {
-      // Prevent default anchor click behavior
-      event.preventDefault();
+			<!-- Start testimonial Area -->
+			<section class="testimonial-area relative section-gap" id="testimonial">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pb-60 col-lg-8">
+							<div class="title text-center">
+								<h1 class="mb-10">Testimonial from our Clients</h1>
+								<p>Who are in extremely love with eco friendly system.</p>
+							</div>
+						</div>
+					</div>						
+					<div class="row">
+						<div class="active-testimonial">
+							<div class="single-testimonial item d-flex flex-row">
+								<div class="thumb">
+									<img class="img-fluid" src="img/t1.png" alt="">
+								</div>
+								<div class="desc">
+									<p>
+										Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.
+									</p>
+									<h4 mt-30>Mark Alviro Wiens</h4>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+								</div>
+							</div>
+							<div class="single-testimonial item d-flex flex-row">
+								<div class="thumb">
+									<img class="img-fluid" src="img/t2.png" alt="">
+								</div>
+								<div class="desc">
+									<p>
+										Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.
+									</p>
+									<h4 mt-30>Mark Alviro Wiens</h4>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+									</div>
+								</div>
+							</div>	
+							<div class="single-testimonial item d-flex flex-row">
+								<div class="thumb">
+									<img class="img-fluid" src="img/t1.png" alt="">
+								</div>
+								<div class="desc">
+									<p>
+										Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.
+									</p>
+									<h4 mt-30>Mark Alviro Wiens</h4>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+								</div>
+							</div>
+							<div class="single-testimonial item d-flex flex-row">
+								<div class="thumb">
+									<img class="img-fluid" src="img/t2.png" alt="">
+								</div>
+								<div class="desc">
+									<p>
+										Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.
+									</p>
+									<h4 mt-30>Mark Alviro Wiens</h4>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+									</div>
+								</div>
+							</div>									
+							<div class="single-testimonial item d-flex flex-row">
+								<div class="thumb">
+									<img class="img-fluid" src="img/t1.png" alt="">
+								</div>
+								<div class="desc">
+									<p>
+										Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.
+									</p>
+									<h4 mt-30>Mark Alviro Wiens</h4>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+								</div>
+							</div>
+							<div class="single-testimonial item d-flex flex-row">
+								<div class="thumb">
+									<img class="img-fluid" src="img/t2.png" alt="">
+								</div>
+								<div class="desc">
+									<p>
+										Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.
+									</p>
+									<h4 mt-30>Mark Alviro Wiens</h4>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+									</div>
+								</div>
+							</div>								
+						</div>					
+					</div>
+				</div>	
+			</section>
+			<!-- End testimonial Area -->
+			
+			
+			<!-- Start latest-blog Area -->
+			<section class="latest-blog-area section-gap" id="blog">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pb-60 col-lg-8">
+							<div class="title text-center">
+								<h1 class="mb-10">Latest News from our Blog</h1>
+								<p>Who are in extremely love with eco friendly system.</p>
+							</div>
+						</div>
+					</div>					
+					<div class="row">
+						<div class="col-lg-6 single-blog">
+							<img class="img-fluid" src="img/b1.png" alt="">
+							<ul class="tags">
+								<li><a href="#">Travel</a></li>
+								<li><a href="#">Life style</a></li>
+							</ul>
+							<a href="#"><h4>Portable latest Fashion for young women</h4></a>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore.
+							</p>
+							<p class="post-date">31st January, 2018</p>
+						</div>
+						<div class="col-lg-6 single-blog">
+							<img class="img-fluid" src="img/b2.png" alt="">
+							<ul class="tags">
+								<li><a href="#">Travel</a></li>
+								<li><a href="#">Life style</a></li>
+							</ul>
+							<a href="#"><h4>Portable latest Fashion for young women</h4></a>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore.
+							</p>
+							<p class="post-date">31st January, 2018</p>
+						</div>						
+					</div>
+				</div>	
+			</section>
+			<!-- End latest-blog Area -->
+			
 
-      // Store hash
-      var hash = this.hash;
+			<!-- start footer Area -->		
+			<footer class="footer-area section-gap">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-5 col-md-6 col-sm-6">
+							<div class="single-footer-widget">
+								<h6>About Us</h6>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua.
+								</p>
+								<p class="footer-text">
+									<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+								</p>	
+							</div>
+						</div>
+						<div class="col-lg-5  col-md-6 col-sm-6">
+							<div class="single-footer-widget">
+								<h6>Newsletter</h6>
+								<p>Stay update with our latest</p>
+								<div class="" id="mc_embed_signup">
+									<form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
+										<input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '" required="" type="email">
+			                            	<button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+			                            	<div style="position: absolute; left: -5000px;">
+												<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+											</div>
 
-      // Using jQuery's animate() method to add smooth page scroll
-      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 900, function(){
-   
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash;
-      });
-    } // End if
-  });
-  
-  $(window).scroll(function() {
-    $(".slideanim").each(function(){
-      var pos = $(this).offset().top;
+										<div class="info"></div>
+									</form>
+								</div>
+							</div>
+						</div>						
+						<div class="col-lg-2 col-md-6 col-sm-6 social-widget">
+							<div class="single-footer-widget">
+								<h6>Follow Us</h6>
+								<p>Let us be social</p>
+								<div class="footer-social d-flex align-items-center">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-dribbble"></i></a>
+									<a href="#"><i class="fa fa-behance"></i></a>
+								</div>
+							</div>
+						</div>							
+					</div>
+				</div>
+			</footer>	
+			<!-- End footer Area -->		
 
-      var winTop = $(window).scrollTop();
-        if (pos < winTop + 600) {
-          $(this).addClass("slide");
-        }
-    });
-  });
-})
-</script>
+			<script src="js/vendor/jquery-2.2.4.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+			<script src="js/vendor/bootstrap.min.js"></script>			
+			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+  			<script src="js/easing.min.js"></script>			
+			<script src="js/hoverIntent.js"></script>
+			<script src="js/superfish.min.js"></script>	
+			<script src="js/jquery.ajaxchimp.min.js"></script>
+			<script src="js/jquery.magnific-popup.min.js"></script>	
+			<script src="js/owl.carousel.min.js"></script>			
+			<script src="js/jquery.sticky.js"></script>
+			<script src="js/jquery.nice-select.min.js"></script>			
+			<script src="js/parallax.min.js"></script>		
+			<script src="js/mail-script.js"></script>	
+			<script src="js/main.js"></script>	
+		</body>
+	</html>
 
-</body>
-</html>
+
+
